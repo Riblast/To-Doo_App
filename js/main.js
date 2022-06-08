@@ -42,31 +42,3 @@ function newNote () {
         return ;
     }
 }
-
-
-
-
-
-
-
-/*(async () => {
-
-    const { value: fruit } = await Swal.fire({
-    title: 'Bienvenido, quiere crear una nueva nota o ver la última creada?',
-    input: 'select',
-    inputOptions: {
-        new: 'Crear nueva nota',
-        saved: 'Ver nota guardada',
-    },
-    inputPlaceholder: 'Elige una opción',
-    showCancelButton: true,
-    inputValidator: (value) => {
-        if (value === 'crear nueva nota') {
-            ;
-        } else {
-            alert(note);
-        }
-    }
-})
-})()
-*/
