@@ -1,21 +1,27 @@
+const formulario = document.getElementById("formulario")
+const listaTareas = document.getElementById("lista-tareas")
+const template = document.getElementById("template")
 
 let noteTitle;
 let noteContent;
 let note = "Todavía no has creado una nota";
+let noteSaves = []
 
 window.onload = startFunction;
 
 function startFunction() {
-        let start = prompt("Bienvenido, quiere crear una nueva nota o ver la última creada?\n Para crear una nueva nota ingrese 1\n Para ver la última nota ingrese 2")
+        let start = prompt("Bienvenido, quiere crear una nueva nota o ver las últimas creadas?\n Para crear una nueva nota ingrese 1\n Para ver las últimas notas ingrese 2")
     if (parseInt(start) === 1) {
         newNote();
         startFunction();
     }
     else if (parseInt(start) === 2) {
-        alert(note)
+        for (let index = 0; index < noteSaves.length; index++) {
+            alert(noteSaves[index])
+        }
         startFunction();
     }
-    else if (start === null) {
+    else if(start === null){
         return;
     }
     else {
@@ -39,6 +45,8 @@ function newNote () {
     while (noteTitle != "" && noteContent != "") {
         note = `${(noteTitle)} \n\n ${noteContent}`;
         alert("Su nota ha sido guardada con éxito: \n" + note)
-        return ;
+        noteSaves.push(note)
+        return;
     }
 }
+console.log(noteSaves)

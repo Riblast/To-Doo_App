@@ -6,20 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Doo</title>
     <link rel="stylesheet" href="./css/main.css">
+    <script src="https://kit.fontawesome.com/2884e641ba.js" crossorigin="anonymous"></script>
 </head>
-<body class="h-screen w-screen bg-gradient-to-r from-blue-700 to-blue-400 grid place-content-center">
-    <h1 class=" text-2xl">
+<body class="h-screen w-screen grid place-content-center bg-scroll -z-10" style="background-image: url(./assets/img/Shiny\ Overlay.svg)">
+    <h1 class=" text-3xl text-center text-c2 font-bold">
         To-Doo App
     </h1>
-    <main class="bg-white flex flex-row items-baseline place-content-center w-fit h-80 rounded-md p-4">
-            <div class="flex">
+    <main class="bg-c2 items-baseline place-content-center w-64 h-80 rounded-md p-4">
+            <form id="formulario" class="flex mb-2 mx-2 h-8">
                 <label for="textInput"></label>
-                <input class="rounded-md border-2 w-32 border-black" type="text" name="textInput">
-                <button class="rounded-md w-8 h-7 bg-violet-900 border-2 border-black"></button>
-            </div>
-            <div class="">
-            </div>
+                <input class="rounded-md border-2 w-40 border-gray-900" type="text" name="textInput">
+                <button class="rounded-md w-14 bg-v2 border-2 border-gray-900 ml-1 font-bold text-xs text-gray-800">ADD</button>
+            </form>
+            <div id="lista-tareas" ></div>
     </main>
+    <template id="template">
+        <div id="tarea" class="bg-c1 rounded-md place-content-between items-center flex p-1 h-8 m-2">
+            <p>Tarea 1</p>
+            <h3>
+                <i class="fa-regular fa-trash-can"></i>
+            </h3>
+        </div>
+    </template>
     <footer></footer>
     <script src="./js/main.js"></script>
 </body>
