@@ -19,6 +19,10 @@ function startFunction() {
         for (let index = 0; index < noteSaves.length; index++) {
             alert(noteSaves[index])
         }
+        while (noteSaves = []) {
+            alert(note);
+            break;
+        }
         startFunction();
     }
     else if(start === null){
@@ -49,4 +53,3 @@ function newNote () {
         return;
     }
 }
-console.log(noteSaves)
