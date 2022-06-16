@@ -1,12 +1,36 @@
-const formulario = document.getElementById("formulario")
+/*const formulario = document.getElementById("formulario")
 const listaTareas = document.getElementById("lista-tareas")
-const template = document.getElementById("template")
+const input = document.getElementById("input")
+const template = document.getElementById("template").content
 
-let noteTitle;
 let noteContent;
 let note = "Todavía no has creado una nota";
-let noteSaves = []
+let noteSaves = [] */
 
+document.getElementById("btn").onclick = añadirNota;
+parrafo = document.getElementById("parrafoNota")
+
+function añadirNota() {
+    const nota = document.getElementById("input").value;
+    let nuevoTexto = document.createTextNode(nota)
+    if (nota != "") {
+        document.getElementById("parrafoNota").innerHTML = ""
+        parrafo.appendChild(nuevoTexto)
+        alert("Su nota ha sido guardada con éxito")
+        return;
+    }
+    else {
+        alert("Ingrese un valor válido")
+    }
+}
+
+
+
+
+
+
+
+/*
 window.onload = startFunction;
 
 function startFunction() {
@@ -52,4 +76,4 @@ function newNote () {
         noteSaves.push(note)
         return;
     }
-}
+} */

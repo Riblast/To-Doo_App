@@ -513,8 +513,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: 100vw;
 }
 
-.w-64 {
-  width: 16rem;
+.w-72 {
+  width: 18rem;
 }
 
 .w-40 {
@@ -523,6 +523,18 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .w-14 {
   width: 3.5rem;
+}
+
+.flex-1 {
+  flex: 1 1 0%;
+}
+
+.flex-shrink {
+  flex-shrink: 1;
+}
+
+.flex-grow {
+  flex-grow: 1;
 }
 
 .place-content-center {
@@ -569,6 +581,19 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: rgb(202 196 206 / var(--tw-bg-opacity));
 }
 
+.bg-gradient-to-l {
+  background-image: linear-gradient(to left, var(--tw-gradient-stops));
+}
+
+.from-v2 {
+  --tw-gradient-from: #9067C6;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(144 103 198 / 0));
+}
+
+.to-v1 {
+  --tw-gradient-to: #242038;
+}
+
 .bg-scroll {
   background-attachment: scroll;
 }
@@ -604,7 +629,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   color: rgb(247 236 225 / var(--tw-text-opacity));
 }
 
-.text-gray-800 {
+.text-transparent {
+  color: transparent;
+}
+
+.text-c1 {
   --tw-text-opacity: 1;
-  color: rgb(31 41 55 / var(--tw-text-opacity));
+  color: rgb(202 196 206 / var(--tw-text-opacity));
 }
