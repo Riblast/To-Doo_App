@@ -13,25 +13,22 @@
         To-Doo App
     </h1>
     <main class="bg-c2 items-baseline place-content-center w-72 h-80 rounded-md p-4">
-            <div id="formulario" class="flex mb-2 mx-2 h-8">
+            <form id="formulario" class="flex place-content-between mb-2 mx-1 h-8">
                 <label for="textInput"></label>
-                <input id="input" class="rounded-md border-2 w-40 border-gray-900" type="text" name="textInput" placeholder="Nueva tarea..." autofocus>
-                <button id="btn" class="rounded-md w-14 bg-v2 border-2 border-gray-900 ml-1 font-bold text-xs bg-gradient-to-l from-v2 to-v1 text-c1">add task</button>
-            </div>
-            <div id="lista-tareas" >
-                <div id="tarea" class="bg-c1 rounded-md place-content-between items-center flex  p-1 min-h-8 m-2">
-                    <p id="parrafoNota">Todavía no has creado una nota</p>
-                    <h3>
-                        <i class="fa-regular fa-trash-can"></i>
-                    </h3>
-                </div>
+                <input id="input" class="rounded-md border-2 w-44 border-gray-900" type="text" name="textInput" placeholder="Nueva tarea..." autofocus>
+                <button id="btn" class="rounded-md w-16 bg-v2 border-2 border-gray-900 font-bold text-xs bg-gradient-to-l from-v2 to-v1 text-c1">add task</button>
+            </form>
+            <div id="lista-tareas">
             </div>
     </main>
     <template id="template">
-        <div id="tarea" class="bg-c1 rounded-md place-content-between items-center flex p-1 h-8 m-2">
-            <p>Tarea 1</p>
+        <div id="tarea" class="bg-c1 rounded-md place-content-between flex items-center  p-1 min-h-8 mx-1 my-2">
             <h3>
-                <i class="fa-regular fa-trash-can"></i>
+                <i class="fa-regular fa-square m-2" role="button"></i>
+            </h3>
+            <p id="parrafoNota" class="w-44 break-words">Todavía no has creado una nota</p>
+            <h3>
+                <i class="fa-regular fa-trash-can m-2" role="button"></i>
             </h3>
         </div>
     </template>
