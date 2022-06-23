@@ -5,13 +5,23 @@ const template = document.getElementById("template").content
 const fragment = document.createDocumentFragment()
 let tareas = {}
 
+document.addEventListener("DOMContentLoaded", () =>{
+    if (localStorage.getItem("tareas")) {
+        tareas = JSON.parse(localStorage.getItem("tareas"))
+    }
+    imprimirTareas()
+})
+
 formulario.addEventListener("submit", e => {
     e.preventDefault()
 
-    setTarea(e)
+    setTarea()
 })
 
-function setTarea(e){
+listaTareas.addEventListener("click", e => {
+    botonTarea(e)
+})
+function setTarea(){
     if(input.value.trim() === ""){
         return
     }
@@ -27,39 +37,48 @@ function setTarea(e){
 }
 
 function imprimirTareas() {
+
+    localStorage.setItem("tareas", JSON.stringify(tareas))
+
+    if (Object.values(tareas).length === 0) {
+        listaTareas.innerHTML = `
+        <div id="tarea" class="bg-c1 rounded-md place-content-between flex items-center  p-1 min-h-8 mx-1 my-2">
+            <p id="parrafoNota">Todavía no has creado una nota...</p>
+        </div>`
+        return
+    }
+
     listaTareas.innerHTML = ""
     Object.values(tareas).forEach(tarea => {
         const clone = template.cloneNode(true)
         clone.querySelector("p").textContent = tarea.texto
+
+        if(tarea.estado === true) {
+            clone.querySelectorAll(".fa-regular")[0].classList.replace("fa-square", "fa-square-check")
+            clone.getElementById("tarea").classList.replace("bg-c1", "bg-v2")
+            clone.querySelector("p").style.textDecoration = "line-through"
+        }
+        clone.querySelectorAll(".fa-regular")[0].dataset.id = tarea.id
+        clone.querySelectorAll(".fa-regular")[1].dataset.id = tarea.id
         fragment.appendChild(clone)
     })
     listaTareas.appendChild(fragment)
 }
 
-
-
-
-
-
-
-
-
-
-
-/*
-document.getElementById("btn").onclick = añadirNota;
-parrafo = document.getElementById("parrafoNota")
-
-function añadirNota() {
-    const nota = document.getElementById("input").value;
-    let nuevoTexto = document.createTextNode(nota)
-    if (nota != "") {
-        document.getElementById("parrafoNota").innerHTML = ""
-        parrafo.appendChild(nuevoTexto)
-        alert("Su nota ha sido guardada con éxito")
-        return;
+function botonTarea(e) {
+    if(e.target.classList.contains("fa-trash-can") === true) {
+        delete tareas[e.target.dataset.id]
+        imprimirTareas()
     }
-    else {
-        alert("Ingrese un valor válido")
+
+    if(e.target.classList.contains("fa-square") === true) {
+        tareas[e.target.dataset.id].estado = true
+        imprimirTareas()
     }
-}*/
+
+    if(e.target.classList.contains("fa-square-check") === true) {
+        tareas[e.target.dataset.id].estado = false
+        imprimirTareas()
+    }
+    e.stopPropagation()
+}

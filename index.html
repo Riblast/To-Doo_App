@@ -8,17 +8,17 @@
     <link rel="stylesheet" href="./css/main.css">
     <script src="https://kit.fontawesome.com/2884e641ba.js" crossorigin="anonymous"></script>
 </head>
-<body class="h-screen w-screen grid place-content-center bg-scroll -z-10" style="background-image: url(./assets/img/Shiny\ Overlay.svg)">
+<body class="h-screen w-screen grid place-content-center -z-10" style="background-image: url(./assets/img/Shiny\ Overlay.svg)">
     <h1 class="text-3xl text-center text-c2 font-bold">
         To-Doo App
     </h1>
-    <main class="bg-c2 items-baseline place-content-center w-72 h-80 rounded-md p-4">
+    <main class="bg-c2 items-baseline place-content-center w-auto md:w-96 min-h-[22rem] max-h-[30rem]  rounded-md p-4">
             <form id="formulario" class="flex place-content-between mb-2 mx-1 h-8">
                 <label for="textInput"></label>
-                <input id="input" class="rounded-md border-2 w-44 border-gray-900" type="text" name="textInput" placeholder="Nueva tarea..." autofocus>
-                <button id="btn" class="rounded-md w-16 bg-v2 border-2 border-gray-900 font-bold text-xs bg-gradient-to-l from-v2 to-v1 text-c1">add task</button>
+                <input id="input" class="rounded-md border-2 w-44 md:w-60 border-gray-900" type="text" name="textInput" placeholder="Nueva tarea..." autofocus>
+                <button id="btn" class="rounded-md w-24 bg-v2 border-2 border-gray-900 font-bold text-xs bg-gradient-to-l from-v2 to-v1 text-c1">add task</button>
             </form>
-            <div id="lista-tareas">
+            <div id="lista-tareas" class="h-[20rem] overflow-x-scroll ">
             </div>
     </main>
     <template id="template">
