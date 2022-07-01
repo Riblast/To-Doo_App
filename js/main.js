@@ -6,15 +6,15 @@ const fragment = document.createDocumentFragment()
 let tareas = {}
 
 document.addEventListener("DOMContentLoaded", () =>{
-    if (localStorage.getItem("tareas")) {
+    /* if (localStorage.getItem("tareas")) {
         tareas = JSON.parse(localStorage.getItem("tareas"))
-    }
+    } */
+    localStorage.getItem("tareas") && (tareas = JSON.parse(localStorage.getItem("tareas")))
     imprimirTareas()
 })
 
 formulario.addEventListener("submit", e => {
     e.preventDefault()
-
     setTarea()
 })
 
@@ -23,7 +23,25 @@ listaTareas.addEventListener("click", e => {
 })
 function setTarea(){
     if(input.value.trim() === ""){
+        Toastify({
+            text: "No has ingresado una nota",
+            duration: 3000,
+            close:true,
+            style: {
+                background: "linear-gradient(to right, #242038, #9067C6)",
+            }
+        }).showToast();
         return
+    }
+    else{
+        Toastify({
+            text: "Su nota se ingreso correctamente",
+            duration: 3000,
+            close: true,
+            style: {
+                background: "linear-gradient(to right, #242038, #9067C6)",
+            }
+        }).showToast();
     }
     const tarea = {
         id: Date.now(),

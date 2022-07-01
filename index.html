@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Doo</title>
     <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <script src="https://kit.fontawesome.com/2884e641ba.js" crossorigin="anonymous"></script>
 </head>
 <body class="h-screen w-screen grid place-content-center -z-10" style="background-image: url(./assets/img/Shiny\ Overlay.svg)">
@@ -19,6 +20,9 @@
                 <button id="btn" class="rounded-md w-24 bg-v2 border-2 border-gray-900 font-bold text-xs bg-gradient-to-l from-v2 to-v1 text-c1">add task</button>
             </form>
             <div id="lista-tareas" class="h-[20rem] overflow-x-scroll ">
+            </div>
+            <div >
+
             </div>
     </main>
     <template id="template">
@@ -34,5 +38,6 @@
     </template>
     <footer></footer>
     <script src="./js/main.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 </body>
 </html>
