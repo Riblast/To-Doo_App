@@ -3,6 +3,7 @@ const listaTareas = document.getElementById("lista-tareas")
 const input = document.getElementById("input")
 const template = document.getElementById("template").content
 const fragment = document.createDocumentFragment()
+const deleteAllBtn = document.getElementById("deleteAllBtn")
 let tareas = {}
 
 document.addEventListener("DOMContentLoaded", () =>{
@@ -21,11 +22,15 @@ formulario.addEventListener("submit", e => {
 listaTareas.addEventListener("click", e => {
     botonTarea(e)
 })
+
+deleteAllBtn.addEventListener("click", e => {
+    eliminarTareas()
+})
 function setTarea(){
     if(input.value.trim() === ""){
         Toastify({
             text: "No has ingresado una nota",
-            duration: 3000,
+            duration: 1500,
             close:true,
             style: {
                 background: "linear-gradient(to right, #242038, #9067C6)",
@@ -36,7 +41,7 @@ function setTarea(){
     else{
         Toastify({
             text: "Su nota se ingreso correctamente",
-            duration: 3000,
+            duration: 1500,
             close: true,
             style: {
                 background: "linear-gradient(to right, #242038, #9067C6)",
@@ -60,7 +65,7 @@ function imprimirTareas() {
 
     if (Object.values(tareas).length === 0) {
         listaTareas.innerHTML = `
-        <div id="tarea" class="bg-c1 rounded-md place-content-between flex items-center  p-1 min-h-8 mx-1 my-2">
+        <div id="tarea" class="select-none bg-c1 rounded-md place-content-between flex items-center  p-1 min-h-8 mx-1 my-2">
             <p id="parrafoNota">Todavía no has creado una nota...</p>
         </div>`
         return
@@ -98,5 +103,22 @@ function botonTarea(e) {
         tareas[e.target.dataset.id].estado = false
         imprimirTareas()
     }
+
     e.stopPropagation()
+}
+function eliminarTareas(){
+    listaTareas.innerHTML = `
+    <div id="tarea" class="select-none bg-c1 rounded-md place-content-between flex items-center  p-1 min-h-8 mx-1 my-2">
+        <p id="parrafoNota">Todavía no has creado una nota...</p>
+    </div>`
+    tareas = {}
+    localStorage.setItem("tareas", JSON.stringify(tareas))
+    Toastify({
+        text: "Las tareas se han eliminado correctamente",
+        duration: 1500,
+        close:true,
+        style: {
+            background: "linear-gradient(to right, #242038, #9067C6)",
+        }
+    }).showToast();
 }
