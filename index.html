@@ -16,7 +16,7 @@
     <main class="bg-c2 items-baseline place-content-center w-auto md:w-96 min-h-[22rem] max-h-[30rem] rounded-md p-4">
             <form id="formulario" class="flex place-content-between mb-2 mx-1 h-8">
                 <label for="textInput"></label>
-                <input id="input" class="select-none rounded-md border-2 w-44 md:w-60 border-gray-900" type="text" name="textInput" placeholder="Nueva tarea..." autofocus>
+                <input id="input" class="select-none rounded-md border-2 w-44 md:w-60 border-gray-900" type="text" name="textInput" placeholder="Nueva tarea..." autocomplete="off" autofocus>
                 <button id="btn" class="select-none rounded-md w-24  border-2 border-gray-900 font-bold text-xs bg-gradient-to-l from-v2 to-v1 text-c1 hover:text-v3">add task</button>
             </form>
             <div id="lista-tareas" class="h-[20rem] overflow-y-scroll overflow-x-hidden">
@@ -40,7 +40,9 @@
         </div>
     </template>
     <footer></footer>
+
     <script src="./js/main.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>
