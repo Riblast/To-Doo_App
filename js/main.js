@@ -4,6 +4,16 @@ const input = document.getElementById("input")
 const template = document.getElementById("template").content
 const fragment = document.createDocumentFragment()
 const deleteAllBtn = document.getElementById("deleteAllBtn")
+const quoteBtn = document.getElementById("quoteBtn")
+const options = {
+	method: 'POST',
+	headers: {
+		'content-type': 'application/json',
+		'X-RapidAPI-Key': '77a5ac9c8fmsh923a18e29d2c37ep186b4fjsn7b52aed6d6e7',
+		'X-RapidAPI-Host': 'quotel-quotes.p.rapidapi.com'
+	},
+	body: '{"pageSize":25,"page":10,"topic":"motivational"}'
+};
 let tareas = {}
 
 document.addEventListener("DOMContentLoaded", () =>{
@@ -25,6 +35,10 @@ listaTareas.addEventListener("click", e => {
 
 deleteAllBtn.addEventListener("click", e => {
     eliminarTareas()
+})
+
+quoteBtn.addEventListener("click", e => {
+    showQuote()
 })
 function setTarea(){
     if(input.value.trim() === ""){
@@ -122,3 +136,26 @@ function eliminarTareas(){
         }
     }).showToast();
 }
+function randomIntFromInterval(min, max) { // min and max included 
+    return Math.floor(Math.random() * (max - min + 1) + min)
+}
+function showQuote(){
+    fetch('https://quotel-quotes.p.rapidapi.com/topic', options)
+	.then(response => response.json())
+	.then(response => {
+        Toastify({
+            text: response[randomIntFromInterval(0,23)].quote,
+            duration: 5500,
+            close:true,
+            style: {
+                background: "linear-gradient(to right, #242038, #9067C6)",
+            }
+        }).showToast();
+    }
+    )
+	.catch(err => console.error(err));
+}
+
+
+
+
