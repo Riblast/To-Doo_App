@@ -120,12 +120,17 @@ function botonTarea(e) {
 
     e.stopPropagation()
 }
+
 function eliminarTareas(){
-    listaTareas.innerHTML = `
-    <div id="tarea" class="select-none bg-c1 rounded-md place-content-between flex items-center  p-1 min-h-8 mx-1 my-2">
-        <p id="parrafoNota">Todavía no has creado una nota...</p>
-    </div>`
-    tareas = {}
+    Object.values(tareas).forEach(tarea => {
+        if(tarea.estado === true){
+            delete tareas[tarea.id]
+        }
+    })
+    const elements = Array.from(document.getElementsByClassName('bg-v2'));
+    elements.forEach(element => {
+        element.remove();
+    });
     localStorage.setItem("tareas", JSON.stringify(tareas))
     Toastify({
         text: "Las tareas se han eliminado correctamente",
@@ -136,9 +141,11 @@ function eliminarTareas(){
         }
     }).showToast();
 }
+
 function randomIntFromInterval(min, max) { // min and max included 
     return Math.floor(Math.random() * (max - min + 1) + min)
 }
+
 function showQuote(){
     fetch('https://quotel-quotes.p.rapidapi.com/topic', options)
 	.then(response => response.json())
